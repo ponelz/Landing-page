@@ -1,0 +1,119 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Influencer Landing Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      margin: 0;
+      padding: 0;
+      color: white;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    button {
+      background-color: #ffcc00;
+      color: black;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #ffaa00;
+    }
+    input[type="email"] {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+      margin-right: 10px;
+      width: 250px;
+      max-width: 80%;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    .btn-link {
+      display: none; /* hidden until email is submitted */
+      margin-top: 20px;
+    }
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to AI Influencer</h1>
+    <p>Enter your email to unlock free AI tools, guides, and resources.</p>
+    
+    <!-- Email Signup Form -->
+    <form id="emailForm" action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    
+    <!-- Hidden Button (shows after email) -->
+    <a href="https://your-directory-link.com" id="enterBtn" class="btn-link">
+      <button>Enter Now</button>
+    </a>
+  </div>
+  <div class="footer">
+    &copy; 2025 AI Influencer
+  </div>
+
+  <!-- POPUP AD SCRIPT PLACEHOLDER -->
+  <!-- Insert your popup ad JS link below -->
+  <!-- <script src="your-popup-ad-link.js"></script> -->
+
+  <script>
+    // Show "Enter Now" button after form is submitted
+    document.getElementById("emailForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // stop page reload
+      const form = e.target;
+
+      // Send form data to Formspree
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          form.style.display = "none"; // hide form
+          document.getElementById("enterBtn").style.display = "block"; // show Enter Now
+        } else {
+          alert("Oops! Something went wrong, please try again.");
+        }
+      }).catch(error => {
+        alert("Network error. Please try again.");
+      });
+    });
+  </script>
+</body>
+</html>
